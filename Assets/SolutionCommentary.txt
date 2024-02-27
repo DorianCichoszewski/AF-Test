@@ -11,8 +11,15 @@ Considered actions:
 - replacing Camera.main - some older editors used FindObjectOfType or something similar, but now it should be cached internally. This should be changed later when more cameras will be added.
 - replacing Physics.Raycast() - Physics.RaycastNonAlloc() could be used, but as stated in the documentation "The order of the results is undefined".
 - removing Debug.Log() - it will optimise method, but also remove potentially useful information. Is should be safe to delete for the build using a custom logging class wrapper or pragma #if with  i.e. DISABLE_LOGGING symbol added in a build step
-c) Purly from a code perspective should be as simple as 1) adding more code to the Item class 2) creating a new ConsumableItem that derives from Item 3) Using the IItem interface for Item and ConsumableItem.
+c) Purely from a code perspective should be as simple as 1) adding more code to the Item class 2) creating a new ConsumableItem that derives from Item 3) Using the IItem interface for Item and ConsumableItem.
 The problem is in the inspector, which won't serialize object inside itself, as it can't serialize null for classes. To solve it I could introduce the ItemData struct which will be used to create the new item on consume, but I decided to go one step further and store such data in a file using scriptables.
 In my opinion, such data shouldn't be stored in prefab/scene as 1) one has to open prefab/scene to change the value of an item 2) if i.e. a value of orange has to be changed, one has to go through every file that contains this item and change it manually.
 Other than scriptable for each item I could have one scriptable with all items and access them via i.e. string, but I don't like string personally.
 Also, it wasn't stated how to use the item, so I added action to the inspector context menu which tries to consume all items.
+
+Part 2:
+To have easy access to gameplay values, unit data is stored as scriptable object. Asside from data there's also refernce to mesh which will be spawned on map.
+All units have HP bar above themselves, and UI indicates current turn and next unit.
+Used design patterns:
+1) Flyweight - units don't copy all their class data, rather store reference and access scriptable file
+2) Observer - applied to UI connection. Game works should work even without UI. So UI chacks for event to know when to update

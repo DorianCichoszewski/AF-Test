@@ -1,9 +1,8 @@
-using System.Linq;
-
 namespace AFSInterview.Army
 {
 	using UnityEngine;
 	using System.Collections.Generic;
+	using System.Linq;
 	
 	public class ArmyController : MonoBehaviour
 	{

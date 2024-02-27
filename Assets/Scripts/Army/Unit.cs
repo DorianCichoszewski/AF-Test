@@ -1,22 +1,18 @@
-using UnityEngine;
-using UnityEngine.UI;
-
 namespace AFSInterview.Army
 {
+	using UnityEngine;
+	using UnityEngine.UI;
+	
 	public class Unit : MonoBehaviour
 	{
 		[SerializeField] private UnitScriptable definition;
 		[SerializeField] private Slider slider;
 		
-		// Debug
-		[SerializeField] private int currentLife;
-
 		private ArmyController assignedArmy;
-		private bool isAlive = true;
+		private int currentLife;
 
 		public UnitAttribute Attribute => definition.Attribute;
 		public int AttackInterval => definition.AttackInterval;
-		public bool IsAlive => isAlive;
 
 		public void Init(ArmyController army)
 		{
@@ -46,7 +42,6 @@ namespace AFSInterview.Army
 
 		private void Death()
 		{
-			isAlive = false;
 			assignedArmy.RemoveUnit(this);
 			gameObject.SetActive(false);
 		}

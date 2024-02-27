@@ -8,8 +8,6 @@ namespace AFSInterview.Army
 	{
 		public List<Unit> unitsToProcess = new ();
 
-		public float test;
-
 		public int RemainingUnits => unitsToProcess.Count;
 
 		public void AddUnit(Unit unit)

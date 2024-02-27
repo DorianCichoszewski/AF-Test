@@ -1,8 +1,8 @@
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace AFSInterview.Army
 {
+	using System.Collections.Generic;
+	using UnityEngine;
+	
 	public class CombatTimeline : MonoBehaviour
 	{
 		[SerializeField]

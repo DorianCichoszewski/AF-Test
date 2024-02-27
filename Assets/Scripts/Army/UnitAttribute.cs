@@ -1,7 +1,7 @@
-using System;
-
 namespace AFSInterview.Army
 {
+	using System;
+	
 	[Flags]
 	public enum UnitAttribute
 	{

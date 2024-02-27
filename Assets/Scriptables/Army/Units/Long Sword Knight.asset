@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mesh: {fileID: 2807207760431298987, guid: 849e1046713768149bd88314bf2ac58a, type: 3}
   attribute: 2
-  maxHealth: 10
+  maxHealth: 20
   armor: 2
   attackInterval: 2
   baseAttackDamage: 3

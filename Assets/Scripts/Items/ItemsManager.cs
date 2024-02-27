@@ -1,4 +1,6 @@
-﻿namespace AFSInterview.Items
+﻿using System;
+
+namespace AFSInterview.Items
 {
 	using TMPro;
 	using UnityEngine;
@@ -7,50 +9,38 @@
 	{
 		[SerializeField] private InventoryController inventoryController;
 		[SerializeField] private int itemSellMaxValue;
-		[SerializeField] private Transform itemSpawnParent;
-		[SerializeField] private GameObject itemPrefab;
-		[SerializeField] private BoxCollider itemSpawnArea;
-		[SerializeField] private float itemSpawnInterval;
 
-		private float nextItemSpawnTime;
-		
-		private void Update()
+		[SerializeField] private TextMeshProUGUI moneyText;
+		[SerializeField] private ItemsSpawner itemsSpawner;
+		[SerializeField] private LayerMask itemLayerMask;
+
+		private void Start()
 		{
-			if (Time.time >= nextItemSpawnTime)
-				SpawnNewItem();
-			
-			if (Input.GetMouseButtonDown(0))
-				TryPickUpItem();
-			
-			if (Input.GetKeyDown(KeyCode.Space))
-				inventoryController.SellAllItemsUpToValue(itemSellMaxValue);
-
-			FindObjectOfType<TextMeshProUGUI>().text = "Money: " + inventoryController.Money;
+			moneyText.text = "Money: " + inventoryController.Money;
 		}
 
-		private void SpawnNewItem()
+		private void Update()
 		{
-			nextItemSpawnTime = Time.time + itemSpawnInterval;
-			
-			var spawnAreaBounds = itemSpawnArea.bounds;
-			var position = new Vector3(
-				Random.Range(spawnAreaBounds.min.x, spawnAreaBounds.max.x),
-				0f,
-				Random.Range(spawnAreaBounds.min.z, spawnAreaBounds.max.z)
-			);
-			
-			Instantiate(itemPrefab, position, Quaternion.identity, itemSpawnParent);
+			if (Input.GetMouseButtonDown(0))
+				TryPickUpItem();
+
+			if (Input.GetKeyDown(KeyCode.Space))
+			{
+				inventoryController.SellAllItemsUpToValue(itemSellMaxValue);
+				moneyText.text = "Money: " + inventoryController.Money;
+			}
 		}
 
 		private void TryPickUpItem()
 		{
 			var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			var layerMask = LayerMask.GetMask("Item");
-			if (!Physics.Raycast(ray, out var hit, 100f, layerMask) || !hit.collider.TryGetComponent<IItemHolder>(out var itemHolder))
+			if (!Physics.Raycast(ray, out var hit, 100f, itemLayerMask) || !hit.collider.TryGetComponent<IItemHolder>(out var itemHolder))
 				return;
 			
 			var item = itemHolder.GetItem(true);
             inventoryController.AddItem(item);
+			// Removing Debug.Log() will optimise this method, but will also remove potentially useful information
+			// Potential solutions : custom logging class wrapper or pragma #if with i.e. DISABLE_LOGGING symbol added in build step
             Debug.Log("Picked up " + item.Name + " with value of " + item.Value + " and now have " + inventoryController.ItemsCount + " items");
 		}
 	}

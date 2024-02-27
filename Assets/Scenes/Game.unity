@@ -453,6 +453,7 @@ GameObject:
   m_Component:
   - component: {fileID: 226485278}
   - component: {fileID: 226485279}
+  - component: {fileID: 226485280}
   m_Layer: 0
   m_Name: ItemsManager
   m_TagString: Untagged
@@ -489,6 +490,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryController: {fileID: 117262}
   itemSellMaxValue: 150
+  moneyText: {fileID: 1931683898}
+  itemsSpawner: {fileID: 226485280}
+  itemLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+--- !u!114 &226485280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226485277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe6a871319949fba9190d2a6de24554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   itemSpawnParent: {fileID: 246465938}
   itemPrefab: {fileID: 1329781387587706877, guid: 70297e35c79c32843b2cbbda048d720c,
     type: 3}

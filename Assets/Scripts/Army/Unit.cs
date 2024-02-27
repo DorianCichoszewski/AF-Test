@@ -1,11 +1,14 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace AFSInterview.Army
 {
 	public class Unit : MonoBehaviour
 	{
 		[SerializeField] private UnitScriptable definition;
-
+		[SerializeField] private Slider slider;
+		
+		// Debug
 		[SerializeField] private int currentLife;
 
 		private ArmyController assignedArmy;
@@ -20,6 +23,8 @@ namespace AFSInterview.Army
 			assignedArmy = army;
 			currentLife = definition.MaxHealth;
 			gameObject.name = definition.name;
+			slider.maxValue = definition.MaxHealth;
+			slider.value = currentLife;
 		}
 
 		public void TakeDamage(int damage)
@@ -30,6 +35,7 @@ namespace AFSInterview.Army
 			{
 				Death();
 			}
+			slider.value = currentLife;
 		}
 
 		public void ProcessTurn()

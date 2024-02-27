@@ -8,7 +8,10 @@
 		[SerializeField] private List<Item> items;
 		[SerializeField] private int money;
 
-		public int Money => money;
+		public int Money {
+			get => money;
+			set => money = value;
+		}
 		public int ItemsCount => items.Count;
 
 		public void SellAllItemsUpToValue(int maxValue)
@@ -27,6 +30,18 @@
 		public void AddItem(Item item)
 		{
 			items.Add(item);
+		}
+
+		[ContextMenu(nameof(ConsumeAllItems))]
+		private void ConsumeAllItems()
+		{
+			for (int i = items.Count - 1; i >= 0; i--)
+			{
+				if (items[i].Use(this))
+				{
+					items.RemoveAt(i);
+				}
+			}
 		}
 	}
 }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AFSInterview.Items
+﻿namespace AFSInterview.Items
 {
 	using TMPro;
 	using UnityEngine;

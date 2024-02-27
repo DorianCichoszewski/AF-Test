@@ -153,19 +153,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
-  - name: Wooden shield
-    value: 90
-  - name: Bow
-    value: 150
-  - name: Mana Potion
-    value: 60
-  - name: Sword
-    value: 130
-  - name: Long Sword
-    value: 160
-  - name: Plate Armor
-    value: 300
+  - definition: {fileID: 11400000, guid: dbf515b4d03759b44b7a5d90171478f6, type: 2}
+    item:
+      rid: -2
+  - definition: {fileID: 11400000, guid: 5bb27eeeca3395b489afaa83a75d2330, type: 2}
+    item:
+      rid: -2
+  - definition: {fileID: 11400000, guid: e2bd39cbb907a4f48872ef72980ddb36, type: 2}
+    item:
+      rid: -2
+  - definition: {fileID: 11400000, guid: f1db1942f9c2b454382445ac39058ad2, type: 2}
+    item:
+      rid: -2
+  - definition: {fileID: 11400000, guid: e0a775e90c3f76a4f98fa370c65a3dc9, type: 2}
+    item:
+      rid: -2
+  - definition: {fileID: 11400000, guid: baf3ada3f0c53da4ebdac8fa83d95237, type: 2}
+    item:
+      rid: -2
   money: 280
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!4 &117263
 Transform:
   m_ObjectHideFlags: 0
@@ -204,6 +215,12 @@ PrefabInstance:
       propertyPath: item.value
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1562054653796185208, guid: 70297e35c79c32843b2cbbda048d720c,
+        type: 3}
+      propertyPath: item.definition
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d3d314eb9a8ba94b84fa34fed42cb0b,
+        type: 2}
     - target: {fileID: 6760591476060598716, guid: 70297e35c79c32843b2cbbda048d720c,
         type: 3}
       propertyPath: m_RootOrder
@@ -603,6 +620,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item
       objectReference: {fileID: 0}
+    - target: {fileID: 1562054653796185208, guid: 70297e35c79c32843b2cbbda048d720c,
+        type: 3}
+      propertyPath: item.definition
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f6aae45e94367343a9ecc992fa4f067,
+        type: 2}
     - target: {fileID: 6760591476060598716, guid: 70297e35c79c32843b2cbbda048d720c,
         type: 3}
       propertyPath: m_RootOrder
@@ -787,6 +810,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item
       objectReference: {fileID: 0}
+    - target: {fileID: 1562054653796185208, guid: 70297e35c79c32843b2cbbda048d720c,
+        type: 3}
+      propertyPath: item.definition
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d3d314eb9a8ba94b84fa34fed42cb0b,
+        type: 2}
     - target: {fileID: 6760591476060598716, guid: 70297e35c79c32843b2cbbda048d720c,
         type: 3}
       propertyPath: m_RootOrder
@@ -1230,6 +1259,12 @@ PrefabInstance:
       propertyPath: item.value
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 1562054653796185208, guid: 70297e35c79c32843b2cbbda048d720c,
+        type: 3}
+      propertyPath: item.definition
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f6aae45e94367343a9ecc992fa4f067,
+        type: 2}
     - target: {fileID: 6760591476060598716, guid: 70297e35c79c32843b2cbbda048d720c,
         type: 3}
       propertyPath: m_RootOrder
@@ -1350,6 +1385,12 @@ PrefabInstance:
       propertyPath: item.value
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 1562054653796185208, guid: 70297e35c79c32843b2cbbda048d720c,
+        type: 3}
+      propertyPath: item.definition
+      value: 
+      objectReference: {fileID: 11400000, guid: 78277126e11d7aa429e1fd9b9f80e6d6,
+        type: 2}
     - target: {fileID: 6760591476060598716, guid: 70297e35c79c32843b2cbbda048d720c,
         type: 3}
       propertyPath: m_RootOrder
@@ -1461,6 +1502,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item
       objectReference: {fileID: 0}
+    - target: {fileID: 1562054653796185208, guid: 70297e35c79c32843b2cbbda048d720c,
+        type: 3}
+      propertyPath: item.definition
+      value: 
+      objectReference: {fileID: 11400000, guid: 78277126e11d7aa429e1fd9b9f80e6d6,
+        type: 2}
     - target: {fileID: 6760591476060598716, guid: 70297e35c79c32843b2cbbda048d720c,
         type: 3}
       propertyPath: m_RootOrder

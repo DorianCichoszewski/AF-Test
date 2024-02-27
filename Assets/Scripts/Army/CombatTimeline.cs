@@ -1,14 +1,11 @@
 namespace AFSInterview.Army
 {
 	using System.Collections.Generic;
-	using UnityEngine;
 	
-	public class CombatTimeline : MonoBehaviour
+	public class CombatTimeline
 	{
-		[SerializeField]
 		private int currentTurnIndex = 1;
-
-		[SerializeField]
+		
 		private List<CombatTurn> plannedTurns = new();
 		
 		private CombatTurn CurrentTurn => plannedTurns[0];

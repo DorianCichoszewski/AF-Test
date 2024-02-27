@@ -7,9 +7,8 @@ namespace AFSInterview.Army
 	{
 		[SerializeField] private ArmyController army1;
 		[SerializeField] private ArmyController army2;
-
-		[SerializeField]
-		private CombatTimeline timeline;
+		
+		private CombatTimeline timeline = new ();
 		
 		private void Start()
 		{

@@ -6,29 +6,28 @@ namespace AFSInterview.Army
 	[Serializable]
 	public class CombatTurn
 	{
-		public List<Unit> unitsToProcess = new ();
+		public Queue<Unit> unitsToProcess = new ();
 
 		public int RemainingUnits => unitsToProcess.Count;
 
 		public void AddUnit(Unit unit)
 		{
-			unitsToProcess.Add(unit);
+			unitsToProcess.Enqueue(unit);
 		}
 		
 		public bool RemoveUnit(Unit unit)
 		{
-			List<Unit> newQueue = new();
+			Queue<Unit> newQueue = new();
 			bool removedUnit = false;
 			while (unitsToProcess.Count > 0)
 			{
-				var currentUnit = unitsToProcess[0];
-				unitsToProcess.RemoveAt(0);
+				var currentUnit = unitsToProcess.Dequeue();
 				if (currentUnit == unit)
 				{
 					removedUnit = true;
 					continue;
 				}
-				newQueue.Add(currentUnit);
+				newQueue.Enqueue(currentUnit);
 			}
 
 			unitsToProcess = newQueue;
@@ -37,9 +36,7 @@ namespace AFSInterview.Army
 
 		public Unit GetNextUnit()
 		{
-			var unit =  unitsToProcess[0];
-			unitsToProcess.RemoveAt(0);
-			return unit;
+			return unitsToProcess.Dequeue();
 		}
 	}
 }

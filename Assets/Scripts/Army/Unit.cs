@@ -1,26 +1,29 @@
 namespace AFSInterview.Army
 {
 	using UnityEngine;
-	using UnityEngine.UI;
+	using System;
 	
 	public class Unit : MonoBehaviour
 	{
 		[SerializeField] private UnitScriptable definition;
-		[SerializeField] private Slider slider;
 		
 		private ArmyController assignedArmy;
 		private int currentLife;
 
+		public event Action<int> onLifeChanged;
+		public event Action onDeath;
+
 		public UnitAttribute Attribute => definition.Attribute;
+		public UnitScriptable Definition => definition;
 		public int AttackInterval => definition.AttackInterval;
+		public ArmyController AssignedArmy => assignedArmy;
+		public int CurrentLife => currentLife;
 
 		public void Init(ArmyController army)
 		{
 			assignedArmy = army;
 			currentLife = definition.MaxHealth;
 			gameObject.name = definition.name;
-			slider.maxValue = definition.MaxHealth;
-			slider.value = currentLife;
 			Instantiate(definition.Mesh, transform);
 		}
 
@@ -32,7 +35,7 @@ namespace AFSInterview.Army
 			{
 				Death();
 			}
-			slider.value = currentLife;
+			onLifeChanged?.Invoke(currentLife);
 		}
 
 		public void ProcessTurn()
@@ -45,6 +48,7 @@ namespace AFSInterview.Army
 		{
 			assignedArmy.RemoveUnit(this);
 			gameObject.SetActive(false);
+			onDeath?.Invoke();
 		}
 	}
 }

@@ -10,6 +10,9 @@ namespace AFSInterview.Army
 		
 		private CombatTurn CurrentTurn => plannedTurns[0];
 
+		public int CurrentTurnIndex => currentTurnIndex;
+		public Unit NextUnit => CurrentTurn.PreviewUnit();
+
 		public void AddNewUnit(Unit unit)
 		{
 			if (plannedTurns.Count == 0)
@@ -32,11 +35,6 @@ namespace AFSInterview.Army
 
 		public void Next()
 		{
-			while (CurrentTurn.RemainingUnits == 0)
-			{
-				NextTurn();
-				currentTurnIndex++;
-			}
 			var unit = CurrentTurn.GetNextUnit();
 			unit.ProcessTurn();
 			
@@ -46,6 +44,12 @@ namespace AFSInterview.Army
 				plannedTurns.Add(new CombatTurn());
 			}
 			plannedTurns[turnsToWait].AddUnit(unit);
+			
+			while (CurrentTurn.RemainingUnits == 0)
+			{
+				NextTurn();
+				currentTurnIndex++;
+			}
 		}
 
 		private void NextTurn()

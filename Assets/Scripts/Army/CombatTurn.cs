@@ -38,5 +38,10 @@ namespace AFSInterview.Army
 		{
 			return unitsToProcess.Dequeue();
 		}
+
+		public Unit PreviewUnit()
+		{
+			return unitsToProcess.Peek();
+		}
 	}
 }

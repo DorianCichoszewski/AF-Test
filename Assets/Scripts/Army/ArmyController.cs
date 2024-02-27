@@ -6,10 +6,12 @@ namespace AFSInterview.Army
 	
 	public class ArmyController : MonoBehaviour
 	{
+		[SerializeField] private new string name;
 		[SerializeField] private List<Unit> units;
 
 		private CombatManager combatManager;
 
+		public string Name => name;
 		public List<Unit> Units => units;
 		public CombatManager CombatManager => combatManager;
 

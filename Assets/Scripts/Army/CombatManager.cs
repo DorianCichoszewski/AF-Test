@@ -2,6 +2,7 @@ namespace AFSInterview.Army
 {
 	using UnityEngine;
 	using System.Collections.Generic;
+	using System;
 	
 	public class CombatManager : MonoBehaviour
 	{
@@ -9,8 +10,13 @@ namespace AFSInterview.Army
 		[SerializeField] private ArmyController army2;
 		
 		private CombatTimeline timeline = new ();
+
+		public CombatTimeline Timeline => timeline;
+
+		public event Action onNext;
+		public event Action onEnd;
 		
-		private void Start()
+		private void Awake()
 		{
 			army1.Init(this);
 			army2.Init(this);
@@ -39,13 +45,15 @@ namespace AFSInterview.Army
 		{
 			ArmyController enemyArmy = army == army1 ? army2 : army1;
 
-			int randomEnemyIndex = Random.Range(0, enemyArmy.Units.Count);
+			int randomEnemyIndex = UnityEngine.Random.Range(0, enemyArmy.Units.Count);
 			return enemyArmy.Units[randomEnemyIndex];
 		}
 
 		public void EndCombat(ArmyController losingArmy)
 		{
 			Debug.Log("The End");
+			onEnd?.Invoke();
+			enabled = false;
 		}
 
 		public void RemoveUnit(Unit unit)
@@ -56,6 +64,7 @@ namespace AFSInterview.Army
 		private void NextTurn()
 		{
 			timeline.Next();
+			onNext?.Invoke();
 		}
 	}
 }

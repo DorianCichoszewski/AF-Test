@@ -13,7 +13,12 @@ namespace AFSInterview.Army
 		[SerializeField] private int baseAttackDamage;
 		[SerializeField] private List<AttackOverride> attackOverrides;
 
-		public int AttackValue(UnitAttribute targetsAttribute)
+		public UnitAttribute Attribute => attribute;
+		public int MaxHealth => maxHealth;
+		public int Armor => armor;
+		public int AttackInterval => attackInterval;
+
+		public int GetAttackValue(UnitAttribute targetsAttribute)
 		{
 			foreach (var attackOverride in attackOverrides)
 			{

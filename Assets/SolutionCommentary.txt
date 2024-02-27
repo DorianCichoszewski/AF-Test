@@ -1,0 +1,18 @@
+Part 1:
+a) When removing item from list, all items further away will move closer to fill missing item. Fastest way to fix it is to reverse order for for loop. Possible alternatives: storing items to remove in other array, and remove them after checking everything
+(FindObjectOfType<TextMeshProUGUI>() is begging to be the error with more than 1 text)
+b) Used optimisations:
+- Storing reference to Text
+- Changing text only when neccessary
+- Caching layer mask (side bonus: changing it in inspector)
+Other actions:
+- Separated spawning logic - it won't improve performance
+Considered actions:
+- replacing Camera.main - some older editors used FindObjectOfType or something similar, but now it should be cached internally. Should be changed later, when more cameras will be added.
+- replacing Physics.Raycast() - Physics.RaycastNonAlloc() could be used, but as stated in documentation "The order of the results is undefined".
+- removing Debug.Log() - it will optimise method, but also remove potentially useful information. Is should be safe to delete for build using custom logging class wrapper or pragma #if with i.e. DISABLE_LOGGING symbol added in build step
+c) Purly from code perspective is should be as simple as 1) adding more code to Item class 2) creating new ConsumableItem that derives from Item 3) Using IItem interface for Item and ConsumableItem.
+Problem is in inspector, which won't serialize object iside itself, as it can't serialize null for classes. To solve it I could introduce ItemData struct which will be used to create new item on consume, but I decided to go one step further and store such data in file using scriptables.
+In my opinion such data shouldn't be stored in prefab / scene as 1) one has to open prefab/scene to change value of item 2) if i.e. value of orange has to be changed, one has to go through every file that contain item and change it manually.
+Other than scriptable for each item I could have one scriptable with all items and access them via i.e. string, but I don't like string personally.
+Also it wasn't stated how to use item, so I added action to inspecotr context menu which tries to consume all items.

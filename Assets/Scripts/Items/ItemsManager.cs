@@ -37,8 +37,6 @@
 			
 			var item = itemHolder.GetItem(true);
             inventoryController.AddItem(item);
-			// Removing Debug.Log() will optimise this method, but will also remove potentially useful information
-			// Potential solutions : custom logging class wrapper or pragma #if with i.e. DISABLE_LOGGING symbol added in build step
             Debug.Log("Picked up " + item.Name + " with value of " + item.Value + " and now have " + inventoryController.ItemsCount + " items");
 		}
 	}

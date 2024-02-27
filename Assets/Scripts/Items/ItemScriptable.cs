@@ -1,6 +1,9 @@
 namespace AFSInterview.Items
 {
 	using UnityEngine;
+#if UNITY_EDITOR
+	using UnityEditor;
+#endif
 	
 	[CreateAssetMenu(menuName = "AFSInterview/Item", fileName = "Item")]
 	public class ItemScriptable : ScriptableObject
@@ -23,11 +26,26 @@ namespace AFSInterview.Items
 
 		private void OnValidate()
 		{
-			if (moneyOnUse != 0 || itemOnUse != null)
-				isConsumable = true;
-			
-			if (moneyOnUse == 0 && itemOnUse == null)
-				isConsumable = false;
+			if (moneyOnUse != 0 || itemOnUse != null && !isConsumable)
+			{
+				SetConsumable(true);
+			}
+
+			if (moneyOnUse == 0 && itemOnUse == null && isConsumable)
+			{
+				SetConsumable(false);
+			}
+		}
+
+		private void SetConsumable(bool newValue)
+		{
+			if (isConsumable != newValue)
+			{
+				isConsumable = newValue;
+#if UNITY_EDITOR
+				EditorUtility.SetDirty(this);
+#endif
+			}
 		}
 	}
 }

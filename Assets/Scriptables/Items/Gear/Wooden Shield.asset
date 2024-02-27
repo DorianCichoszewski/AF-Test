@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Wooden Shield
   value: 90
-  isConsumable: 1
+  isConsumable: 0
   moneyOnUse: 0
   itemOnUse: {fileID: 0}

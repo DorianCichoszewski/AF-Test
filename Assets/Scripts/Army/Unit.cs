@@ -21,6 +21,7 @@ namespace AFSInterview.Army
 			gameObject.name = definition.name;
 			slider.maxValue = definition.MaxHealth;
 			slider.value = currentLife;
+			Instantiate(definition.Mesh, transform);
 		}
 
 		public void TakeDamage(int damage)

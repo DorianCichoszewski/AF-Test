@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 036d905badf24ba39996d511b02088c0, type: 3}
   m_Name: Ram
   m_EditorClassIdentifier: 
+  mesh: {fileID: 9169731204315546444, guid: 8d4b670236894db4884f68f7813aaea0, type: 3}
   attribute: 6
   maxHealth: 16
   armor: 2

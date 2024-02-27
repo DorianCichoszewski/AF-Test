@@ -6,6 +6,7 @@ namespace AFSInterview.Army
 	[CreateAssetMenu(menuName = "AFSInterview/Unit", fileName = "Unit")]
 	public class UnitScriptable : ScriptableObject
 	{
+		[SerializeField] private GameObject mesh;
 		[SerializeField] private UnitAttribute attribute;
 		[SerializeField] private int maxHealth;
 		[SerializeField] private int armor;
@@ -13,6 +14,7 @@ namespace AFSInterview.Army
 		[SerializeField] private int baseAttackDamage;
 		[SerializeField] private List<AttackOverride> attackOverrides;
 
+		public GameObject Mesh => mesh;
 		public UnitAttribute Attribute => attribute;
 		public int MaxHealth => maxHealth;
 		public int Armor => armor;

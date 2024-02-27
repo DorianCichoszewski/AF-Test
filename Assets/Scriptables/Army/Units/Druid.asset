@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 036d905badf24ba39996d511b02088c0, type: 3}
   m_Name: Druid
   m_EditorClassIdentifier: 
+  mesh: {fileID: 2909479574489349799, guid: 8c772cf3db346024fb94146384a5a16c, type: 3}
   attribute: 1
   maxHealth: 9
   armor: 0

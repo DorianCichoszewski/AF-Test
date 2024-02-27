@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 036d905badf24ba39996d511b02088c0, type: 3}
   m_Name: Long Sword Knight
   m_EditorClassIdentifier: 
+  mesh: {fileID: 2807207760431298987, guid: 849e1046713768149bd88314bf2ac58a, type: 3}
   attribute: 2
   maxHealth: 10
   armor: 2

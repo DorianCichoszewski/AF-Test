@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 036d905badf24ba39996d511b02088c0, type: 3}
   m_Name: Catapult
   m_EditorClassIdentifier: 
+  mesh: {fileID: 236958070946508368, guid: 6eaa0a23051c2b84d8c9726e9cf89577, type: 3}
   attribute: 4
   maxHealth: 12
   armor: 1

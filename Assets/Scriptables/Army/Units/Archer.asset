@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 036d905badf24ba39996d511b02088c0, type: 3}
   m_Name: Archer
   m_EditorClassIdentifier: 
+  mesh: {fileID: 7670346552453469200, guid: f9063a64487b99646bfe9f7117f864a8, type: 3}
   attribute: 1
   maxHealth: 8
   armor: 1
